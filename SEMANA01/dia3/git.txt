@@ -1,0 +1,22 @@
+comandos de git
+1 - para clonar un repositorio
+git clone [url del repositorio de github]
+
+2 - para agregar cambios al repositorio local
+git add .
+
+3 - para guardar los cambios en el repositorio local
+git commit -m "comentario"
+
+4 - para configurar usuario y correo de github
+git config --global user.name "Cesar codigo"
+git config --global user.email cmaytadatabaseg1@gmail.com
+
+5 - generar llaves ssh
+
+ssh-keygen -t rsa -b 4096 -C "cmaytadatabaseg1@gmail.com"
+eval $(ssh-agent)
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub
+
+copiar el codigo y pegarlo en github
