@@ -14,7 +14,7 @@ git config --global user.email cmaytadatabaseg1@gmail.com
 
 5 - generar llaves ssh
 
-ssh-keygen -t rsa -b 4096 -C "cmaytadatabaseg1@gmail.com"
+ssh-keygen -t rsa -b 4096 -C "cesarmayta@gmail.com"
 eval $(ssh-agent)
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub
