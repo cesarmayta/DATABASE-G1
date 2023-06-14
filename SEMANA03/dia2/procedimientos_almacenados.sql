@@ -1,4 +1,5 @@
 select * from tbl_alumno
+select * from tbl_movilidad tm 
 
 use db_movilidad_escolar;
 
@@ -28,3 +29,37 @@ end
 
 call ejemplo_bucle(10,@resultado);
 select @resultado;
+
+drop procedure if exists sp_registrar_movilidad;
+create procedure sp_registrar_movilidad(
+in nombre VARCHAR(100),in apellidos VARCHAR(100),
+in grado INT,in apoderado INT,in colegio INT,
+in vehiculo INT,in tipo VARCHAR(100),
+in turno VARCHAR(100),in seccion VARCHAR(100),in docente VARCHAR(100))
+begin
+	declare alumnoid INT;
+	declare pago DOUBLE;
+
+	set pago = 0;
+
+	if tipo = 'COMPLETO' then
+		set pago = 150;
+	else
+		set pago = 120;
+	end if;
+	
+	insert into tbl_alumno(alumno_nombre,alumno_apellido)
+	values (nombre,apellidos);
+
+	select max(alumno_id) into alumnoid from tbl_alumno;
+
+	insert into tbl_movilidad(movilidad_tipo_servicio,movilidad_turno,movilidad_seccion,movilidad_docente,
+	movilidad_pago,colegio_id,apoderado_id,grado_id,vehiculo_id,alumno_id)
+	values (tipo,turno,seccion,docente,pago,colegio,apoderado,grado,vehiculo,alumnoid);
+end
+
+
+call sp_registrar_movilidad('LUIS', 'VALDIVIA',1,1,1,1,'RETORNO','MAÑANA','A','RAUL GOMEZ');
+
+
+
